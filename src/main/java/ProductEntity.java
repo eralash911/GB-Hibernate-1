@@ -1,12 +1,13 @@
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "product")
-public class ProductEntity {
+public class ProductEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private long id;
+    private int id;
     @Column(name = "title")
     private String title;
     @Column(name = "price")
@@ -19,7 +20,7 @@ public class ProductEntity {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

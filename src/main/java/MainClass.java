@@ -7,19 +7,45 @@ public class MainClass {
         SessionFactory factory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(ProductEntity.class)
-                //               .addAnnotatedClass(Author.class)
-//                .addAnnotatedClass(Reader.class)
                 .buildSessionFactory();
         // CRUD
         Session session = null;
         session = factory.getCurrentSession();
         session.beginTransaction();
 
-        ProductEntity product = session.get(ProductEntity.class, 1);
-        product.setTitle("IceCream");
-        session.save(product);
-        session.getTransaction().commit();
-        System.out.println(product);
+        try {
+            //CREATE
+            session = factory.getCurrentSession();
+            ProductEntity product1= new ProductEntity();
 
+            product1.setTitle("Java Spring 1");
+            session.beginTransaction();
+            session.save(product1);
+            session.getTransaction().commit();
+
+            //READ
+//        ProductEntity product = session.get(ProductEntity.class, 5);
+//        product.setTitle("IceCream");
+//        session.save(product);
+//        session.getTransaction().commit();
+//        System.out.println(product);
+
+            //  UPDATE
+//            session = factory.getCurrentSession();
+//            session.beginTransaction();
+//            ProductEntity product = session.get(ProductEntity.class, 2);
+//            product.setTitle("Java 1 Advanced");
+//            session.getTransaction().commit();
+//            System.out.println(product);
+
+            //DELETE
+
+//            ProductEntity product = session.get(ProductEntity.class, 2);
+//            session.delete(product);
+//            session.getTransaction().commit();
+        } finally {
+            factory.close();
+            session.close();
+        }
     }
 }
