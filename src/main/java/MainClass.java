@@ -40,9 +40,9 @@ public class MainClass {
 
             //DELETE
 
-//            ProductEntity product = session.get(ProductEntity.class, 2);
-//            session.delete(product);
-//            session.getTransaction().commit();
+            ProductEntity product = session.get(ProductEntity.class, 2);
+            session.delete(product);
+            session.getTransaction().commit();
         } finally {
             factory.close();
             session.close();
